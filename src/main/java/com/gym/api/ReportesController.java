@@ -2,6 +2,7 @@ package com.gym.api;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
+import java.util.List; // 🟢 Asegúrate de importar esto
 import java.util.Map;
 
 @RestController
@@ -21,8 +22,8 @@ public class ReportesController {
         data.put("accesosHoy", 45);
         data.put("productosVendidos", 18);
         
-        // Flujo semanal simulado (Lunes a Domingo) para las barras de la gráfica
-        double[] ventasSemana = {1200.0, 1500.0, 900.0, 2100.0, 1800.0, 2500.0, 1400.0};
+        // 🟢 CORREGIDO: Usamos List.of para asegurar que Jackson genere un Array JSON plano [ ... ]
+        List<Double> ventasSemana = List.of(1200.0, 1500.0, 900.0, 2100.0, 1800.0, 2500.0, 1400.0);
         data.put("ventasSemana", ventasSemana);
 
         return data;
